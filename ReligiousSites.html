@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>India Religious Sites Map</title>
+    <link rel="stylesheet" 
+          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="text-align:center;">Interactive Map of Major Religious Sites in India</h2>
+    <div id="map"></div>
+
+    <script>
+        var map = L.map('map').setView([22.5, 79], 5);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        var places = [
+            ["Somnath Jyotirlinga (Gujarat)", 20.888, 70.401],
+            ["Mallikarjuna Jyotirlinga (Srisailam)", 16.072, 78.869],
+            ["Mahakaleshwar Jyotirlinga (Ujjain)", 23.182, 75.768],
+            ["Omkareshwar Jyotirlinga (MP)", 22.241, 76.155],
+            ["Kedarnath Jyotirlinga (Uttarakhand)", 30.734, 79.066],
+            ["Bhimashankar Jyotirlinga (Maharashtra)", 19.070, 73.536],
+            ["Kashi Vishwanath Jyotirlinga (Varanasi)", 25.317, 82.973],
+            ["Trimbakeshwar Jyotirlinga (Nashik)", 19.932, 73.531],
+            ["Nageshwar Jyotirlinga (Gujarat)", 22.47, 70.07],
+            ["Baidyanath Jyotirlinga (Jharkhand)", 24.480, 86.700],
+            ["Rameshwaram Jyotirlinga (Tamil Nadu)", 9.288, 79.312],
+            ["Grishneshwar Jyotirlinga (Ellora)", 20.025, 75.179],
+            ["Jagannath Puri Temple (Odisha)", 19.813, 85.831],
+            ["Haridwar (Uttarakhand)", 29.945, 78.164],
+            ["Vaishno Devi (J&K)", 33.030, 74.949],
+            ["Golden Temple (Amritsar)", 31.620, 74.876],
+            ["Shirdi Sai Baba Temple", 19.765, 74.474],
+            ["Tirupati Balaji (Andhra Pradesh)", 13.683, 79.347],
+            ["Meenakshi Temple (Madurai)", 9.919, 78.119],
+            ["Akshardham Temple (Delhi)", 28.612, 77.277],
+            ["Ranakpur Jain Temple (Rajasthan)", 25.083, 73.472],
+            ["Bodh Gaya (Bihar)", 24.695, 84.992],
+            ["Sarnath (UP)", 25.381, 83.021],
+            ["Dilwara Jain Temples (Mount Abu)", 24.596, 72.708]
+        ];
+
+        for (var i = 0; i < places.length; i++) {
+            var place = places[i];
+            L.marker([place[1], place[2]])
+                .addTo(map)
+                .bindPopup("<b>" + place[0] + "</b>");
+        }
+    </script>
+</body>
+</html>
